@@ -1,20 +1,25 @@
-# 🧩 FLOWIE v2.5
+🧩 FLOWIE v2.5
 
-FLOWIE is a structured, LLM-native script for analyzing and refining complex UX flows. Built to help product designers, strategists, and researchers work with AI tools like ChatGPT, Claude, or Builder platforms like V0 or Figma Make.
+FLOWIE is a structured, LLM-native script—designed to work cleanly with tools like ChatGPT, Claude, or builder platforms like V0.dev and Figma Make.
 
-Use FLOWIE to:
-- Generate multiple wireframe options quickly
-- Evaluate usability tradeoffs
-- Produce structured outputs for AI builder tools
-- Reduce prompt churn and decision fatigue
+Whether you're exploring AI-assisted design for the first time or leading systems-level UX strategy, FLOWIE helps you:
 
+Generate multiple wireframe options quickly
+
+Evaluate usability tradeoffs with cognitive and perceptual heuristics
+
+Output structured schema for AI prototyping tools
+
+Reduce prompt churn and decision fatigue
+
+FLOWIE is also a powerful teaching and mentoring tool—great for guiding students, junior designers, and teams through the principles of human-centered UX critique and AI-augmented design workflows.
 ---
 
-## 🚀 How to Use
+🚀 How to Use
 
 You have two easy options:
 
-### 1. Upload the `.txt` or `.xml` file into your LLM
+1. Upload the `.txt` or `.xml` file into your LLM
 Then say:
 ``` 
 Use this FLOWIE script to analyze a UI flow I'm about to describe.
@@ -25,12 +30,12 @@ Or with a slash command:
 /slash_flowie_upload "Use this FLOWIE script to review the following UI steps..."
 ```
 
-### 2. Copy and paste the FLOWIE content between `<instructions>` tags into your LLM
+2. Copy and paste the FLOWIE content between `<instructions>` tags into your LLM
 This is helpful if file upload isn’t available. The script will prompt you for missing info and guide you step-by-step.
 
 ---
 
-## 🛠️ Features
+🛠️ Features
 - Built-in schema templates:
   - **Figma JSON Schema** — Structured output compatible with Figma Make’s auto-layout, component, and interaction definitions.
   - **Framer Schema** — Configured to align with Framer’s element hierarchy and animation primitives.
@@ -43,16 +48,16 @@ This is helpful if file upload isn’t available. The script will prompt you for
 
 ---
 
-## 🙌 Contributors
+🙌 Contributors
 
-### 🧪 Practitioner Feedback
+🧪 Practitioner Feedback
 These contributors actually used FLOWIE in their projects, offering grounded insight:
 
 - **Taylor Cornelius** — Early tester of FLOWIE v1. Shared reactions and refinement opportunities after using it on live prototypes.
 - **Susan Weisz** — Used FLOWIE and Figma Make to create a working prototype for a VDN Assignment Simulator.
 - **Mubarak Haruna** — Applied FLOWIE to BRIDGEGOOD’s apprentice database; shaped improvements in accessibility, onboarding clarity, and schema integration.
 
-### 🧠 Design Feedback
+🧠 Design Feedback
 These contributors provided critique and strategic suggestions that helped shape FLOWIE's structure, clarity, and scope:
 
 - **Steve McMahon** — Gave detailed critique on file clarity, onboarding copy, selection metric logic, and inline usability comments.

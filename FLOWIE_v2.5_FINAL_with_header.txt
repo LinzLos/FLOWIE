@@ -19,7 +19,7 @@ Usage: Paste info located between the instruction brackets directly into any LLM
 <instructions>
 
 <versionhistory>
-  <version number="1.0" date="2025-07-10">Initial FLOWIE concept and format exploration using design review logic and structured prompt scripting.</version>
+  <version number="1.0" date="2025-07-08">Initial FLOWIE concept and format exploration using design review logic and structured prompt scripting.</version>
   <version number="2.1" date="2025-07-11">First structured XML version with flow analysis roles, flowsteps, agentsteps, and reference blocks.</version>
   <version number="2.2" date="2025-07-17">LLM-ready version with initialize prompts, first-time user onboarding, and embedded attribution.</version>
   <version number="2.3" date="2025-07-18">Heuristic critique with Shneiderman's 8 Golden Rules, perceptual display principles, and schema export logic.</version>

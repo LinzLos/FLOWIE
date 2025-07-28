@@ -1,9 +1,10 @@
 🧩 To use FLOWIE, upload this file and say:
 "Use this FLOWIE script to analyze a UI flow I'm about to describe."
 
-Alternatively, paste the contents below into any LLM with the command:
+Or, paste the contents below into any LLM with the command:
 /slash_flowie_upload "Use this FLOWIE script to review the following UI steps..."
 
+Alternatively, paste info located between the instruction brackets directly into any LLM (e.g., ChatGPT, Claude). Will prompt user for input if key fields are incomplete.
 ---
 
 
@@ -13,7 +14,6 @@ FLOWIE v2.5 - structured, LLM-native specification for analyzing and refining UX
 <!--
 FLOWIE v2.5 - LLM-Ready Agent Script with Autofill + First-Time User Support
 Author: Lindsay Zuñiga  |  Created: 2025-07-8 | Updated: 2025-07-27
-Usage: Paste info located between the instruction brackets directly into any LLM (e.g., ChatGPT, Claude). Will prompt user for input if key fields are incomplete.
 -->
 
 <instructions>

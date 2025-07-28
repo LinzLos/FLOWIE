@@ -12,7 +12,7 @@ FLOWIE v2.5 - structured, LLM-native specification for analyzing and refining UX
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 FLOWIE v2.5 - LLM-Ready Agent Script with Autofill + First-Time User Support
-Author: Lindsay Zuñiga  |  Created: 2025-07-10 | Updated: 2025-07-27
+Author: Lindsay Zuñiga  |  Created: 2025-07-8 | Updated: 2025-07-27
 Usage: Paste info located between the instruction brackets directly into any LLM (e.g., ChatGPT, Claude). Will prompt user for input if key fields are incomplete.
 -->
 

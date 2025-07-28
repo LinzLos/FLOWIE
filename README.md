@@ -4,7 +4,7 @@ FLOWIE is a structured, LLM-native script—designed to work cleanly with tools 
 
 Whether you're exploring AI-assisted design for the first time or leading systems-level UX strategy, FLOWIE helps you:
 
-Reduce prompt churn and decision fatigue
+- Reduce prompt churn and decision fatigue
 - Generate multiple wireframe options quickly
 - Evaluate usability tradeoffs with cognitive and perceptual heuristics
 - Output structured schema for AI prototyping tools

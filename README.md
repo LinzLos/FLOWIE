@@ -8,6 +8,7 @@ Whether you're exploring AI-assisted design for the first time or leading system
 - Generate multiple wireframe options quickly
 - Evaluate usability tradeoffs with cognitive and perceptual heuristics
 - Output structured schema for AI prototyping tools
+  
 FLOWIE is also a powerful teaching and mentoring tool—great for guiding students, junior designers, and teams through the principles of human-centered UX critique and AI-augmented design workflows.
 ---
 

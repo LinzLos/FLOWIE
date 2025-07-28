@@ -51,8 +51,8 @@ This is helpful if file upload isn’t available. The script will prompt you for
 These contributors actually used FLOWIE in their projects, offering grounded insight:
 
 - **Taylor Cornelius** — Early tester of FLOWIE v1. Shared reactions and refinement opportunities after using it on live prototypes.
-- **Susan Weisz** — Used FLOWIE and Figma Make to create a working prototype for a VDN Assignment Simulator.
-- **Mubarak Haruna** — Applied FLOWIE to BRIDGEGOOD’s apprentice database; shaped improvements in accessibility, onboarding clarity, and schema integration.
+- **Susan Weisz** — Used FLOWIE v2.2 and Figma Make to create a working prototype for a VDN Assignment Simulator.  
+- **Mubarak Haruna** — Used FLOWIE v2.2 while testing BRIDGEGOOD’s apprentice database; helped shape improvements in onboarding clarity, accessibility, and schema alignment.  
 
 🧠 Design Feedback
 These contributors provided critique and strategic suggestions that helped shape FLOWIE's structure, clarity, and scope:
@@ -62,6 +62,8 @@ These contributors provided critique and strategic suggestions that helped shape
 - **Vamsi Batchu** — Shared perspective on AI hallucination risks, balancing context, and LLM visual comprehension limits.
 - **Robert “Bobby” Renteria** — Provided live feedback via Loom on language clarity, terminology comprehension, and user onboarding expectations. Suggested alternate interface ideas (e.g. form-based input), which helped clarify FLOWIE’s focus as a scriptable, adaptable prompt tool—not a hosted UI.
 - **Norm Sun** — Offered microcopy and interaction design feedback that shaped early site experience, helping refine instructional hierarchy.
+- - **Nathan Pacelli** — Suggested integrating a prompt-based fill experience to avoid requiring manual text edits, especially helpful for non-technical users. His feedback helped inform the slash command model and first-time user logic in v2.5.  
+
 
 ---
 

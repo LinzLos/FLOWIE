@@ -8,8 +8,8 @@ Whether you're exploring AI-assisted design for the first time or leading system
 - Generate multiple wireframe options quickly
 - Evaluate usability tradeoffs with cognitive and perceptual heuristics
 - Output structured schema for AI prototyping tools
-  
-FLOWIE is also a powerful teaching and mentoring tool—great for guiding students, junior designers, and teams through the principles of human-centered UX critique and AI-augmented design workflows.
+
+  FLOWIE is also a powerful teaching and mentoring tool—great for guiding students, junior designers, and teams through the principles of human-centered UX critique and AI-augmented design workflows.  
 ---
 
 🚀 How to Use
@@ -27,7 +27,7 @@ Or with a slash command:
 /slash_flowie_upload "Use this FLOWIE script to review the following UI steps..."
 ```
 
-2. Copy and paste the FLOWIE content between `<instructions>` tags into your LLM
+2. Copy and paste the FLOWIE content between `<instructions>` tags into your LLM.
 This is helpful if file upload isn’t available. The script will prompt you for missing info and guide you step-by-step.
 
 ---

@@ -14,7 +14,7 @@ Whether you're exploring AI-assisted design for the first time or leading system
 
 🚀 How to Use
 
-You have two easy options:
+You have three easy options:
 
 1. Upload the `.txt` or `.xml` file into your LLM.
 Then say:
@@ -22,12 +22,12 @@ Then say:
 Use this FLOWIE script to analyze a UI flow I'm about to describe.
 ```
 
-Or with a slash command:
+2. Or with a slash command:
 ``` 
 /slash_flowie_upload "Use this FLOWIE script to review the following UI steps..."
 ```
 
-2. Copy and paste the FLOWIE content between `<instructions>` tags into your LLM.
+3. Copy and paste the FLOWIE content between `<instructions>` tags into your LLM.
 This is helpful if file upload isn’t available. The script will prompt you for missing info and guide you step-by-step.
 
 ---

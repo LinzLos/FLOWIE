@@ -50,7 +50,7 @@ These contributors actually used FLOWIE in their projects, offering grounded ins
 
 - **An early tester** — Early tester of FLOWIE v1. Shared reactions and refinement opportunities after using it on live prototypes.
 - **Susan Weisz** — Used FLOWIE and Figma Make to create a working prototype for a VDN Assignment Simulator.
-- **Mubarak** — Applied FLOWIE to BRIDGEGOOD’s apprentice database; shaped improvements in accessibility, onboarding clarity, and schema integration.
+- **A tester** — Applied FLOWIE to BRIDGEGOOD’s apprentice database; shaped improvements in accessibility, onboarding clarity, and schema integration.
 
 ### 🧠 Design Feedback
 These contributors provided critique and strategic suggestions that helped shape FLOWIE's structure, clarity, and scope:

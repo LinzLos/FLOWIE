@@ -1,4 +1,5 @@
-🧩 FLOWIE v2.5
+# 🧩 FLOWIE v2.5
+
 FLOWIE is a structured, LLM-native script designed to work cleanly with tools like ChatGPT, Claude, V0.dev, and Figma Make.
 
 It acts as a pre-processing structure for AI builders, helping designers shape intent before generation. FLOWIE guides you through flow critique, design reasoning, and tradeoff evaluation—making your logic readable to both collaborators and machines.
@@ -17,7 +18,7 @@ Whether you're exploring AI-assisted design for the first time or leading system
 
 It’s also a powerful teaching and mentoring tool — great for guiding students, junior designers, and teams through the principles of human-centered UX critique and AI-augmented design workflows.
 
-🚀 How to Use
+## 🚀 How to Use
 
 You have three easy options:
 
@@ -37,7 +38,8 @@ This is helpful if file upload isn’t available. The script will prompt you for
 
 ---
 
-🛠️ Features
+## 🛠️ Features
+
 - Built-in schema templates:
   - **Figma JSON Schema** — Structured output compatible with Figma Make’s auto-layout, component, and interaction definitions.
   - **Framer Schema** — Configured to align with Framer’s element hierarchy and animation primitives.
@@ -51,16 +53,14 @@ This is helpful if file upload isn’t available. The script will prompt you for
 ---
 
 
-🧪 Practitioner Feedback
-
-These contributors actually used FLOWIE in their projects, offering grounded insight:
-🙌 Contributors 
+## 🙌 Contributors
 
 These contributors used FLOWIE in real projects and helped shape its development:
 - **Taylor Cornelius** — Early tester of FLOWIE v1. Shared reactions and refinement opportunities after using it on live prototypes.    
 - **Mubarak Haruna** — Used FLOWIE v2.2 on BRIDGEGOOD’s apprentice database; helped shape onboarding clarity and schema logic.
 
-🧠 Design Feedback  
+## 🧠 Design Feedback
+
 These contributors collaborated constructively on FLOWIE’s structure, usability, and direction:
 
 - **Steve McMahon** — Gave detailed critique on file clarity, onboarding copy, selection metric logic, and inline usability comments.

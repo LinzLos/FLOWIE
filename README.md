@@ -20,6 +20,8 @@ It’s also a powerful teaching and mentoring tool — great for guiding student
 
 ## 🚀 How to Use
 
+The script lives in [`scripts/versions/v2.5/`](scripts/versions/v2.5/) as both `.xml` and `.txt`. `manifest.json` always points at the current version.
+
 You have three easy options:
 
 1. Upload the `.txt` or `.xml` file into your LLM.

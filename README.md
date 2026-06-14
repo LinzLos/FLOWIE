@@ -11,7 +11,7 @@ A single structured script (`.xml` + `.txt`, see `manifest.json` for the current
 - **Extracts the structure** — reads the nav, content sections, controls, their order and labels — from whatever artifact you give it. You don't hand-inventory anything.
 - **Checks coupling invariants** — verifies that coupled parts of the UI stay consistent: that a side nav's order matches the content it indexes, labels match their targets, counts line up, controls actually do something, and paths in have paths out.
 - **Traces interactions** — evaluates what happens *after* an action (click a nav item → where do you land, in what order), not just how the screen looks at rest.
-- **Applies usability heuristics** — Shneiderman's 8 Golden Rules and 13 display-design principles.
+- **Applies usability heuristics** — Shneiderman's 8 Golden Rules and Wickens et al.'s 13 display-design principles.[^sources]
 - **Outputs a contract** — a short checklist of the invariants that must hold, so a later edit to one side flags what else must change.
 - **Exports builder schema** — structured output for Figma, Framer, and V0.
 
@@ -34,7 +34,7 @@ The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` al
 - **Structure extraction** from screenshots, code, Figma, or prose — no manual inventory.
 - **Coupling / invariant checks** against a named, extensible invariant library (indexed order, label parity, count parity, control-has-effect, reversible nav).
 - **Interaction-consequence tracing** — reviews resulting state, not just resting layout.
-- **Usability heuristics** — Shneiderman's 8 Golden Rules + 13 display-design principles.
+- **Usability heuristics** — Shneiderman's 8 Golden Rules + Wickens et al.'s 13 display-design principles.
 - **Builder schema export** for Figma, Framer, and V0.
 - **Regression cases** in [`cases/`](cases/) — known failure modes FLOWIE should catch, so each version can be scored against the last.
 - **Guided or Quick Start** input; support for conditional, role-based, and bulk flow variants.
@@ -51,3 +51,5 @@ People who used FLOWIE on real work and genuinely shaped it:
 ---
 
 Created with ❤️ by Lindsay Zuñiga. Please credit when remixing or adapting. Feedback welcome.
+
+[^sources]: Heuristic sources — **8 Golden Rules:** Shneiderman & Plaisant, *Designing the User Interface*. **13 Principles of Display Design:** Wickens, Lee, Liu & Gordon-Becker, *An Introduction to Human Factors Engineering* (2nd ed.). FLOWIE's framework, passes, and invariant logic are original; these established heuristic sets are credited to their authors.

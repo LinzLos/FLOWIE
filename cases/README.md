@@ -27,7 +27,11 @@ Track each version's hit rate as cases accumulate.
 
 | Case | v2.5 | v2.6 |
 |------|------|------|
-| 001-nav-content-order | missed | — |
+| 001-nav-content-order | missed | caught |
+
+> Note on 001: the input is prose that names the divergence, so it tests that
+> the v2.6 coupling step *fires* when given the structure — not the harder
+> extract-from-a-screenshot path. A future image-based fixture would test that.
 
 ## Adding a case
 

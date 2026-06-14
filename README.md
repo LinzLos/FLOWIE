@@ -1,73 +1,53 @@
 # 🧩 FLOWIE v2.6
 
-FLOWIE is a structured, LLM-native script designed to work cleanly with tools like ChatGPT, Claude, V0.dev, and Figma Make.
+FLOWIE is a structured, versioned, machine-readable reference that an agent reads to run a consistent UX-flow critique — extracting a UI's structure, checking it against usability heuristics and coupling invariants, and reporting what would confuse a real user.
 
-It acts as a pre-processing structure for AI builders, helping designers shape intent before generation. FLOWIE guides you through flow critique, design reasoning, and tradeoff evaluation—making your logic readable to both collaborators and machines.
+The point isn't a clever one-off prompt. It's that the critique logic lives in a repo as a structured artifact: readable by both collaborators and machines, version-controlled, and reusable across projects. You improve the critique by editing the script and bumping the version — and every project that references FLOWIE picks up the change.
 
-Whether you're exploring AI-assisted design for the first time or leading systems-level UX strategy, FLOWIE supports faster, clearer outcomes by helping you:
+## What it is today
 
-- Reduce prompt churn and decision fatigue
+A single structured script (`.xml` + `.txt`, see `manifest.json` for the current version) that an LLM or agent can load and run. Given a screenshot, code, a Figma link, or a written description of a screen, FLOWIE:
 
-- Generate multiple wireframe options quickly
+- **Extracts the structure** — reads the nav, content sections, controls, their order and labels — from whatever artifact you give it. You don't hand-inventory anything.
+- **Checks coupling invariants** — verifies that coupled parts of the UI stay consistent: that a side nav's order matches the content it indexes, labels match their targets, counts line up, controls actually do something, and paths in have paths out.
+- **Traces interactions** — evaluates what happens *after* an action (click a nav item → where do you land, in what order), not just how the screen looks at rest.
+- **Applies usability heuristics** — Shneiderman's 8 Golden Rules and 13 display-design principles.
+- **Outputs a contract** — a short checklist of the invariants that must hold, so a later edit to one side flags what else must change.
+- **Exports builder schema** — structured output for Figma, Framer, and V0.
 
-- Evaluate usability tradeoffs with cognitive and perceptual heuristics
+It's also a clean teaching reference for human-centered UX critique — the structure makes the reasoning legible to students and junior designers, not just machines.
 
-- Output structured schema for AI prototyping tools
+## Where it's going
 
-✨ Flowie also introduces a lightweight agent model: assigning simple, role-based behaviors (like navigator, friction tester, and accessibility checker) to simulate UX perspectives and reduce the cognitive burden of solo ideation.
+FLOWIE is built to be operated, not just pasted. The direction — *not yet built* — is for a scheduled agent to run the current version against a project automatically: re-checking invariants as a design changes, rolling out critique updates by version bump, and firing notifications when a check fails. The structured, versioned format is the groundwork for that; this section is a roadmap, not a description of shipped features.
 
-It’s also a powerful teaching and mentoring tool — great for guiding students, junior designers, and teams through the principles of human-centered UX critique and AI-augmented design workflows.
+## 🚀 How to use
 
-## 🚀 How to Use
+The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` always points at the current version.
 
-The script lives in [`scripts/versions/v2.6/`](scripts/versions/v2.6/) as both `.xml` and `.txt`. `manifest.json` always points at the current version.
+**Primary — reference it from an agent.** Point your agent at the current script file and have it run FLOWIE's passes against the project or artifact you're reviewing. Because it's versioned, the agent always reads the same defined logic, and updates propagate by bumping the version.
 
-You have three easy options:
-
-1. Upload the `.txt` or `.xml` file into your LLM.
-Then say:
-``` 
-Use this FLOWIE script to analyze a UI flow I'm about to describe.
-```
-
-2. Or with a slash command:
-``` 
-/slash_flowie_upload "Use this FLOWIE script to review the following UI steps..."
-```
-
-3. Copy and paste the FLOWIE content between `<instructions>` tags into your LLM.
-This is helpful if file upload isn’t available. The script will prompt you for missing info and guide you step-by-step.
-
----
+**Fallback — paste it into a chat.** If you don't have an agent set up, you can still upload the `.txt` or `.xml` to any LLM (ChatGPT, Claude) and say *"Use this FLOWIE script to analyze a UI flow I'm about to describe."* It will prompt you for anything it needs. This is the manual path — fine to start with, but the structure exists so you can automate past it.
 
 ## 🛠️ Features
 
-- Built-in schema templates:
-  - **Figma JSON Schema** — Structured output compatible with Figma Make’s auto-layout, component, and interaction definitions.
-  - **Framer Schema** — Configured to align with Framer’s element hierarchy and animation primitives.
-  - **V0-Compatible Skeleton** — Optional support for V0 (coming soon), geared toward low-code interface generation.
-- Guided or Quick Start input options
-- Support for complex flow variants (conditional, role-based, bulk)
-- Built-in usability heuristic and display design evaluation
-- JSON schema outputs tailored to tools like Figma, Framer (V0 coming soon)
-- Designed to reduce hallucination through structured prompting
+- **Structure extraction** from screenshots, code, Figma, or prose — no manual inventory.
+- **Coupling / invariant checks** against a named, extensible invariant library (indexed order, label parity, count parity, control-has-effect, reversible nav).
+- **Interaction-consequence tracing** — reviews resulting state, not just resting layout.
+- **Usability heuristics** — Shneiderman's 8 Golden Rules + 13 display-design principles.
+- **Builder schema export** for Figma, Framer, and V0.
+- **Regression cases** in [`cases/`](cases/) — known failure modes FLOWIE should catch, so each version can be scored against the last.
+- **Guided or Quick Start** input; support for conditional, role-based, and bulk flow variants.
 
----
-
+> On the roadmap: role-based critique lenses (e.g. navigator, friction-tester, accessibility) mapped to FLOWIE's existing passes. Direction, not a shipped feature.
 
 ## 🙌 Contributors
 
-These contributors used FLOWIE in real projects and helped shape its development:
-- **Taylor Cornelius** — Early tester of FLOWIE v1. Shared reactions and refinement opportunities after using it on live prototypes.    
-- **Mubarak Haruna** — Used FLOWIE v2.2 on BRIDGEGOOD’s apprentice database; helped shape onboarding clarity and schema logic.
+People who used FLOWIE on real work and genuinely shaped it:
 
-## 🧠 Design Feedback
+- **Taylor Cornelius** — Early tester of FLOWIE v1. Shared reactions and refinement opportunities after using it on live prototypes.
+- **Mubarak Haruna** — Used FLOWIE v2.2 on BRIDGEGOOD's apprentice database; helped shape onboarding clarity and schema logic.
 
-These contributors collaborated constructively on FLOWIE’s structure, usability, and direction:
-
-- **Steve McMahon** — Gave detailed critique on file clarity, onboarding copy, selection metric logic, and inline usability comments.
-- **Michael Paulus** — Recommended tool-specific schema selection and slash command initiation. Floated wizard-style model, which helped affirm FLOWIE's prompt-first focus.
-- Shout out to Robert "Bobby" Renteria and Norm Sun on language onboarding clarification.
 ---
 
-Created with ❤️ by Lindsay Zuñiga — 2025. Please credit when remixing or adapting. Feedback welcome.
+Created with ❤️ by Lindsay Zuñiga. Please credit when remixing or adapting. Feedback welcome.

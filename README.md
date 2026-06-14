@@ -1,4 +1,4 @@
-# 🧩 FLOWIE v2.5
+# 🧩 FLOWIE v2.6
 
 FLOWIE is a structured, LLM-native script designed to work cleanly with tools like ChatGPT, Claude, V0.dev, and Figma Make.
 
@@ -20,7 +20,7 @@ It’s also a powerful teaching and mentoring tool — great for guiding student
 
 ## 🚀 How to Use
 
-The script lives in [`scripts/versions/v2.5/`](scripts/versions/v2.5/) as both `.xml` and `.txt`. `manifest.json` always points at the current version.
+The script lives in [`scripts/versions/v2.6/`](scripts/versions/v2.6/) as both `.xml` and `.txt`. `manifest.json` always points at the current version.
 
 You have three easy options:
 

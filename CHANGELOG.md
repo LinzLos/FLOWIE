@@ -3,9 +3,24 @@
 All notable changes to FLOWIE are documented here. Versions track the script
 in `scripts/versions/`; `manifest.json` always points at the current release.
 
+## [2.6] — 2026-06
+
+- Current release. Structure extraction: FLOWIE now builds its own model from
+  whatever artifact it's given (screenshot, code, Figma, or prose) instead of
+  asking the user to inventory the UI.
+- Cross-component coupling checks against a named invariant library (indexed
+  order, label parity, count parity, control-has-effect, reversible nav).
+- Interaction-consequence tracing — evaluates the state after an action, not
+  just the resting layout.
+- Graceful coverage handling: asks for more input only when a check is blocked,
+  otherwise marks findings unverified and proceeds.
+- Invariants/contract output as a change-impact checklist.
+- Motivated by a missed nav↔content order mismatch; captured as regression
+  case `cases/001-nav-content-order`.
+
 ## [2.5] — 2025-07
 
-- Current release. Built-in schema templates (Figma JSON, Framer, V0-compatible skeleton).
+- Built-in schema templates (Figma JSON, Framer, V0-compatible skeleton).
 - Guided or Quick Start input options; support for conditional, role-based, and bulk flow variants.
 - Built-in usability heuristic and display-design evaluation.
 - Lightweight agent model (navigator, friction tester, accessibility checker).

@@ -1,10 +1,10 @@
 {
   "tool": "FLOWIE",
   "description": "Structured, LLM-native script for exploring, critiquing, and improving UX flows.",
-  "current_version": "2.6",
+  "current_version": "2.7",
   "script": {
-    "xml": "scripts/versions/v2.6/flowie_v2.6.xml",
-    "txt": "scripts/versions/v2.6/flowie_v2.6.txt"
+    "xml": "scripts/versions/v2.7/flowie_v2.7.xml",
+    "txt": "scripts/versions/v2.7/flowie_v2.7.txt"
   },
   "versions_dir": "scripts/versions"
 }

@@ -25,13 +25,20 @@ NNN-short-slug/
 
 Track each version's hit rate as cases accumulate.
 
-| Case | v2.5 | v2.6 |
-|------|------|------|
-| 001-nav-content-order | missed | caught |
+| Case | v2.5 | v2.6 | v2.7 |
+|------|------|------|------|
+| 001-nav-content-order | missed | caught | caught |
+| 002-duplicate-affordance | missed | missed | caught |
 
 > Note on 001: the input is prose that names the divergence, so it tests that
 > the v2.6 coupling step *fires* when given the structure — not the harder
 > extract-from-a-screenshot path. A future image-based fixture would test that.
+
+> Note on 002: found in the field — FLOWIE v2.6, run against its author's own
+> NEAR AI concept prototype, evaluated three controls for one `legible ↔ raw`
+> transition and passed each individually. The defect was the *multiplicity*.
+> v2.7 adds the `single-affordance` invariant and the inverse-map `<affordance>`
+> step that catches it.
 
 ## Adding a case
 

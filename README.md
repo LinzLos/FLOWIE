@@ -6,14 +6,14 @@ The point isn't a clever one-off prompt. It's that the critique logic lives in a
 
 ## What it is today
 
-A single structured script (`.xml` + `.txt`, see `manifest.json` for the current version) that an LLM or agent can load and run. Given a screenshot, code, a Figma link, or a written description of a screen, FLOWIE:
+A single structured script (`.xml` + `.txt`, see `manifest.json` for the current version) that an LLM or agent can load and run. FLOWIE is **input/output tool-agnostic**: give it whatever you can capture — a screenshot, code, a live URL, a written description, or a **live MCP connection** from any source (a design-tool MCP server such as Figma's, a browser/DOM MCP, a project-specific server) — and it critiques the flow. Inputs are modalities, not a list of supported products. FLOWIE:
 
 - **Extracts the structure** — reads the nav, content sections, controls, their order and labels — from whatever artifact you give it. You don't hand-inventory anything.
 - **Checks coupling invariants** — verifies that coupled parts of the UI stay consistent: that a side nav's order matches the content it indexes, labels match their targets, counts line up, controls actually do something, and paths in have paths out.
 - **Traces interactions** — evaluates what happens *after* an action (click a nav item → where do you land, in what order), not just how the screen looks at rest.
 - **Applies usability heuristics** — Shneiderman's 8 Golden Rules and Wickens et al.'s 13 display-design principles.[^sources]
 - **Outputs a contract** — a short checklist of the invariants that must hold, so a later edit to one side flags what else must change.
-- **Exports builder schema** — structured output for Figma, Framer, and V0.
+- **Exports a build spec** — a single tool-agnostic implementation spec (structure, routes, components, state, interactions) that any agent or builder can implement; deploy targets like localhost or Netlify are examples, not integrations.
 
 It's also a clean teaching reference for human-centered UX critique — the structure makes the reasoning legible to students and junior designers, not just machines.
 
@@ -31,11 +31,11 @@ The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` al
 
 ## 🛠️ Features
 
-- **Structure extraction** from screenshots, code, Figma, or prose — no manual inventory.
+- **Structure extraction** from screenshots, code, live URLs, prose, or a live MCP connection — no manual inventory, no privileged tool.
 - **Coupling / invariant checks** against a named, extensible invariant library (indexed order, label parity, count parity, control-has-effect, reversible nav).
 - **Interaction-consequence tracing** — reviews resulting state, not just resting layout.
 - **Usability heuristics** — Shneiderman's 8 Golden Rules + Wickens et al.'s 13 display-design principles.
-- **Builder schema export** for Figma, Framer, and V0.
+- **Tool-agnostic build-spec export** — structure / routes / components / state / interactions, implementable by any agent or AI builder.
 - **Regression cases** in [`cases/`](cases/) — known failure modes FLOWIE should catch, so each version can be scored against the last.
 - **Guided or Quick Start** input; support for conditional, role-based, and bulk flow variants.
 

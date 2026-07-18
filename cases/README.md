@@ -29,6 +29,7 @@ Track each version's hit rate as cases accumulate.
 |------|------|------|------|
 | 001-nav-content-order | missed | caught | caught |
 | 002-duplicate-affordance | missed | missed | caught |
+| 003-dead-controls | missed | caught | caught |
 
 > Note on 001: the input is prose that names the divergence, so it tests that
 > the v2.6 coupling step *fires* when given the structure — not the harder
@@ -39,6 +40,15 @@ Track each version's hit rate as cases accumulate.
 > transition and passed each individually. The defect was the *multiplicity*.
 > v2.7 adds the `single-affordance` invariant and the inverse-map `<affordance>`
 > step that catches it.
+
+> Note on 003: found in the field — FLOWIE v2.7, run against the
+> agentic-trust-devtools "declarative trust surface." The surface's central
+> object (the standing declaration) rendered three rule pills styled as controls,
+> none wired; the only live control was one bottom link. Caught by the existing
+> `control-has-effect` invariant (v2.6+) — no new check needed; logged to defend
+> it against backslide, plus an **affordance-honesty corollary**: a styled
+> control must be a control. Motivated making the declaration live (toggling
+> `sponsored bias` re-ranks).
 
 ## Adding a case
 

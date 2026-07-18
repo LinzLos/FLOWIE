@@ -37,9 +37,8 @@ The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` al
 - **Usability heuristics** — Shneiderman's 8 Golden Rules + Wickens et al.'s 13 display-design principles.
 - **Tool-agnostic build-spec export** — structure / routes / components / state / interactions, implementable by any agent or AI builder.
 - **Regression cases** in [`cases/`](cases/) — known failure modes FLOWIE should catch, so each version can be scored against the last.
+- **Role-based critique lenses** — optional navigator / friction / a11y lenses that scope the existing passes to one perspective (wayfinding, effort, or assistive-tech use); with no lens selected, the full critique runs unchanged.
 - **Guided or Quick Start** input; support for conditional, role-based, and bulk flow variants.
-
-> On the roadmap: role-based critique lenses (e.g. navigator, friction-tester, accessibility) mapped to FLOWIE's existing passes. Direction, not a shipped feature.
 
 ## 🙌 Contributors
 

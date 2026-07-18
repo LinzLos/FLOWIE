@@ -13,6 +13,10 @@ in `scripts/versions/`; `manifest.json` always points at the current release.
 - Motivated by a missed duplicate Legible/Raw toggle on an attestation card in
   the NEAR AI / IronClaw concept prototype; captured as regression case
   `cases/002-duplicate-affordance`.
+- Role-based critique lenses: an optional navigator / friction / a11y selector
+  that scopes the existing passes (coupling, affordance, interaction,
+  heuristics) to one perspective — same analysis engine, focused output. No
+  lens selected ⇒ the full critique, unchanged.
 - Parity rule: a version's `.xml` and `.txt` must be identical except for the
   `.txt` usage preamble (v2.6's `.xml` silently lost its heuristics block this
   way). `scripts/check_parity.sh` enforces it — run before cutting a release.

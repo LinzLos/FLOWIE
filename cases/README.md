@@ -30,6 +30,9 @@ Track each version's hit rate as cases accumulate.
 | 001-nav-content-order | missed | caught | caught |
 | 002-duplicate-affordance | missed | missed | caught |
 | 003-dead-controls | missed | caught | caught |
+| 004-label-parity | — | — | caught |
+| 005-count-parity | — | — | caught |
+| 006-reversible-nav | — | — | caught |
 
 > Note on 001: the input is prose that names the divergence, so it tests that
 > the v2.6 coupling step *fires* when given the structure — not the harder
@@ -50,8 +53,18 @@ Track each version's hit rate as cases accumulate.
 > control must be a control. Motivated making the declaration live (toggling
 > `sponsored bias` re-ranks).
 
+> Note on 004–006: **designed traps**, not field misses (issue #1) — one per
+> invariant that had no coverage: `label-parity` (004), `count-parity` (005),
+> `reversible-nav` (006). (`control-has-effect`, the fourth untrapped invariant
+> when #1 was filed, got field case 003 first.) Unlike prose case 001, the
+> inputs are HTML with the defect embedded but never named, so they exercise
+> the extract-from-code path. v2.7 scores are from blind runs — the executing
+> agent was given only the script and the input, not `expected.md`. Earlier
+> columns are "—" (never run); fill them only from a real run, not a guess.
+
 ## Adding a case
 
-Every real-world miss becomes the next case. Number it sequentially, write a
-tight `expected.md` that names the *specific* defect (not a vague heuristic),
-and add a row to the scoring log.
+Every real-world miss becomes the next case; designed traps are also welcome
+when an invariant has no coverage (see 004–006). Number it sequentially, write
+a tight `expected.md` that names the *specific* defect (not a vague heuristic)
+plus the caught/partial/missed bar, and add a row to the scoring log.

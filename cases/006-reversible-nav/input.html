@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Notification preferences</title>
+</head>
+<body>
+  <div id="main-view">
+    <header>
+      <h1>Notification preferences</h1>
+    </header>
+    <form id="prefs-form">
+      <label><input type="checkbox" name="email" checked> Email me about mentions</label>
+      <label><input type="checkbox" name="digest"> Weekly digest</label>
+      <label><input type="checkbox" name="push" checked> Push notifications</label>
+      <button type="button" id="open-advanced">Advanced delivery rules</button>
+      <button type="submit">Save preferences</button>
+    </form>
+  </div>
+
+  <div id="advanced-view" hidden>
+    <h1>Advanced delivery rules</h1>
+    <form id="advanced-form" method="post" action="/preferences/advanced">
+      <fieldset>
+        <legend>Quiet hours</legend>
+        <label>From <input type="time" name="quiet-start" value="22:00"></label>
+        <label>Until <input type="time" name="quiet-end" value="07:00"></label>
+      </fieldset>
+      <fieldset>
+        <legend>Per-channel overrides</legend>
+        <label><input type="checkbox" name="urgent-bypass" checked> Urgent alerts bypass quiet hours</label>
+        <label><input type="checkbox" name="mobile-only"> Send to mobile only</label>
+      </fieldset>
+      <button type="submit">Apply rules</button>
+    </form>
+  </div>
+
+  <script>
+    const mainView = document.getElementById('main-view');
+    const advancedView = document.getElementById('advanced-view');
+
+    document.getElementById('open-advanced').addEventListener('click', () => {
+      mainView.hidden = true;
+      advancedView.hidden = false;
+    });
+
+    // Submitting #advanced-form posts to the server; the page reloads
+    // showing #main-view again with fresh values.
+  </script>
+</body>
+</html>

@@ -3,10 +3,16 @@
 All notable changes to FLOWIE are documented here. Versions track the script
 in `scripts/versions/`; `manifest.json` always points at the current release.
 
-## [2.7] — 2026-06
+## [2.7] — 2026-07
 
 - Current release. Added the `single-affordance` invariant: a state transition
   should have one canonical control.
+- Repositioned FLOWIE as input/output tool-agnostic: inputs are modalities
+  (screenshot, code, live URL, prose, or a live MCP connection from any
+  source — a design-tool MCP server, a browser/DOM MCP); export is a single
+  neutral build spec (structure / routes / components / state / interactions)
+  replacing the per-tool V0/Figma/Framer templates. Deploy targets
+  (localhost, Netlify) are examples, not integrations.
 - New `<affordance>` step builds the inverse map (transition → controls) and
   flags any transition driven by more than one control (e.g., a segmented toggle
   duplicated by inline links), recommending which control is canonical.

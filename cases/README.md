@@ -33,6 +33,7 @@ Track each version's hit rate as cases accumulate.
 | 004-label-parity | — | — | caught |
 | 005-count-parity | — | — | caught |
 | 006-reversible-nav | — | — | caught |
+| 007-extract-from-screenshot | — | — | caught |
 
 > Note on 001: the input is prose that names the divergence, so it tests that
 > the v2.6 coupling step *fires* when given the structure — not the harder
@@ -61,6 +62,15 @@ Track each version's hit rate as cases accumulate.
 > the extract-from-code path. v2.7 scores are from blind runs — the executing
 > agent was given only the script and the input, not `expected.md`. Earlier
 > columns are "—" (never run); fill them only from a real run, not a guess.
+
+> Note on 007: **the extraction-path fixture** (issue #2), resolving the caveat
+> on case 001 — the input is two real screenshots (a loan-queue dashboard in
+> Real Time and 1d modes), so the defect can only be found by reading structure
+> and numbers out of pixels. Primary trap: a net-flow sign contradiction the
+> run must prove arithmetically. Scored caught on a blind v2.7 run, which also
+> surfaced unplanted real findings (a duplicate "Reassign Staff" control — the
+> `single-affordance` invariant firing on a field artifact — and stale
+> mode-coupling on badges and the specialist list).
 
 ## Adding a case
 

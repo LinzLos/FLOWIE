@@ -17,9 +17,25 @@ A single structured script (`.xml` + `.txt`, see `manifest.json` for the current
 
 It's also a clean teaching reference for human-centered UX critique — the structure makes the reasoning legible to students and junior designers, not just machines.
 
-## Where it's going
+## The operator
 
-FLOWIE is built to be operated, not just pasted. The direction — *not yet built* — is for a scheduled agent to run the current version against a project automatically: re-checking invariants as a design changes, rolling out critique updates by version bump, and firing notifications when a check fails. The structured, versioned format is the groundwork for that; this section is a roadmap, not a description of shipped features.
+FLOWIE is built to be operated, not just pasted — and the operator now exists
+(issue #8):
+
+- **On demand:** a `flowie` subagent ([`.claude/agents/flowie.md`](.claude/agents/flowie.md))
+  loads whatever script `manifest.json` points at and runs it against any
+  target — a prototype folder, files, screenshots, a live URL, or an MCP
+  source, optionally scoped by lens. In a session in this repo: *"run flowie
+  on ~/Dev/active/some-prototype"*. It contains no critique logic; the script
+  stays the single source of truth.
+- **Scheduled:** [`scripts/flowie-sweep.sh`](scripts/flowie-sweep.sh) runs the
+  subagent over every target listed in
+  [`operator/sweep-targets.txt`](operator/sweep-targets.txt), writes a dated
+  report to `operator/reports/`, and exits nonzero when any invariant fails —
+  wire it to cron/launchd (or a scheduled task) to get notified when a
+  prototype breaks an invariant. Uncomment targets to enable them.
+
+Still ahead: registering the schedule itself, and richer notification routing.
 
 ## 🚀 How to use
 

@@ -1,0 +1,15 @@
+# FLOWIE sweep targets — one per line: a folder, a file, or a live URL.
+# Lines starting with # are ignored. Uncomment (or add) targets to enable
+# them in the scheduled sweep. Optionally append "| lens" (navigator,
+# friction, or a11y) to scope a target's critique.
+#
+#/Users/lindzlandia/Dev/active/agentic-trust-devtools
+#/Users/lindzlandia/Dev/active/agentic-trust-ux
+#/Users/lindzlandia/Dev/active/dialing-prototype
+#/Users/lindzlandia/Dev/active/drivn-prototype
+#/Users/lindzlandia/Dev/active/green-together
+#/Users/lindzlandia/Dev/active/jordan-r4-prototype
+#/Users/lindzlandia/Dev/active/sam-r4-prototype
+#/Users/lindzlandia/Dev/active/shift-prototype
+#/Users/lindzlandia/Dev/active/tiny-wire
+#/Users/lindzlandia/Dev/active/zunigo-2026

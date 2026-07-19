@@ -1,4 +1,4 @@
-# 🧩 FLOWIE v2.6
+# 🧩 FLOWIE v2.7
 
 FLOWIE is a structured, versioned, machine-readable reference that an agent reads to run a consistent UX-flow critique — extracting a UI's structure, checking it against usability heuristics and coupling invariants, and reporting what would confuse a real user.
 

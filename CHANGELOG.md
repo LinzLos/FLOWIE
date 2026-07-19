@@ -3,9 +3,16 @@
 All notable changes to FLOWIE are documented here. Versions track the script
 in `scripts/versions/`; `manifest.json` always points at the current release.
 
+## [2.8] — 2026-07
+
+- Current release. Licensing cleanup only — the script's attribution block now
+  matches the repo's CC BY 4.0 license (use, adapt, and share with credit),
+  replacing the former "do not republish without permission" line, which
+  contradicted the LICENSE. No behavioral changes from 2.7.
+
 ## [2.7] — 2026-07
 
-- Current release. Added the `single-affordance` invariant: a state transition
+- Added the `single-affordance` invariant: a state transition
   should have one canonical control.
 - Repositioned FLOWIE as input/output tool-agnostic: inputs are modalities
   (screenshot, code, live URL, prose, or a live MCP connection from any

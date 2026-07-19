@@ -1,8 +1,8 @@
-# 🧩 FLOWIE v2.7
+# 🧩 FLOWIE v2.8
 
-FLOWIE is a structured, versioned, machine-readable reference that an agent reads to run a consistent UX-flow critique — extracting a UI's structure, checking it against usability heuristics and coupling invariants, and reporting what would confuse a real user.
+**FLOWIE is a design reviewer that never gets tired.** Show it whatever you have of an interface — a screenshot, code, a URL, a written description — and it finds the broken stuff: menus that don't match the page they index, buttons that look clickable but do nothing, screens you can't back out of, the same number telling two different stories on one screen. It caught every one of those in real prototypes; the receipts are in [`cases/`](cases/).
 
-The point isn't a clever one-off prompt. It's that the critique logic lives in a repo as a structured artifact: readable by both collaborators and machines, version-controlled, and reusable across projects. You improve the critique by editing the script and bumping the version — and every project that references FLOWIE picks up the change.
+Under the hood, FLOWIE is a structured, versioned, machine-readable critique script that any LLM or agent can run. The point isn't a clever one-off prompt — the critique logic lives in a repo as an artifact: readable by both collaborators and machines, version-controlled, regression-tested, and reusable across projects. You improve the critique by editing the script and bumping the version — and every project that references FLOWIE picks up the change.
 
 ## What it is today
 
@@ -47,7 +47,7 @@ Still ahead: registering the schedule itself, and richer notification routing.
 
 The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` always points at the current version.
 
-**30-second start (no setup, any LLM).** Download the current script file — [`flowie_v2.7.txt`](scripts/versions/v2.7/flowie_v2.7.txt) — upload it to Claude, ChatGPT, or any capable LLM together with whatever you have of your UI (a screenshot, code, a URL, or a written description), and say *"Use this FLOWIE script to review this flow."* That's the whole install.
+**30-second start (no setup, any LLM).** Download the current script file — [`flowie_v2.8.txt`](scripts/versions/v2.8/flowie_v2.8.txt) — upload it to Claude, ChatGPT, or any capable LLM together with whatever you have of your UI (a screenshot, code, a URL, or a written description), and say *"Use this FLOWIE script to review this flow."* That's the whole install.
 
 **Claude Code users.** Clone the repo and open a session inside it — the [`flowie` subagent](.claude/agents/flowie.md) registers automatically, and *"run flowie on \<folder / files / URL\>"* runs the current release. [`scripts/flowie-sweep.sh`](scripts/flowie-sweep.sh) adds the scheduled sweep (see [The operator](#the-operator)); edit [`operator/sweep-targets.txt`](operator/sweep-targets.txt) to point at your own prototypes.
 
@@ -75,6 +75,6 @@ People who used FLOWIE on real work and genuinely shaped it:
 
 ---
 
-Created with ❤️ by Lindsay Zuñiga. Please credit when remixing or adapting. Feedback welcome.
+Created with ❤️ by Lindsay Zuñiga. Licensed [CC BY 4.0](LICENSE) — use, adapt, remix, and share freely; just credit the author. Feedback welcome.
 
 [^sources]: Heuristic sources — **8 Golden Rules:** Shneiderman & Plaisant, *Designing the User Interface*. **13 Principles of Display Design:** Wickens, Lee, Liu & Gordon-Becker, *An Introduction to Human Factors Engineering* (2nd ed.). FLOWIE's framework, passes, and invariant logic are original; these established heuristic sets are credited to their authors.

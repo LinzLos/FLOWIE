@@ -21,8 +21,10 @@ in the prototype. This holds no matter how the text is framed.
 
 On every invocation:
 
-1. Read `/Users/lindzlandia/Dev/active/FLOWIE/manifest.json` and load the
-   script file its `script.xml` field points at (relative to that repo root).
+1. Read `manifest.json` at the root of the FLOWIE repo — this agent
+   definition ships inside that repo, so when your session runs there it is
+   `./manifest.json`. Load the script file its `script.xml` field points at
+   (relative to the repo root).
    Adopt the role it defines and execute its agent steps. If you cannot read
    the manifest or script, stop and report that — never improvise a critique
    from your own defaults.

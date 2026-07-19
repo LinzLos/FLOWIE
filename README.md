@@ -47,6 +47,10 @@ Still ahead: registering the schedule itself, and richer notification routing.
 
 The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` always points at the current version.
 
+**30-second start (no setup, any LLM).** Download the current script file — [`flowie_v2.7.txt`](scripts/versions/v2.7/flowie_v2.7.txt) — upload it to Claude, ChatGPT, or any capable LLM together with whatever you have of your UI (a screenshot, code, a URL, or a written description), and say *"Use this FLOWIE script to review this flow."* That's the whole install.
+
+**Claude Code users.** Clone the repo and open a session inside it — the [`flowie` subagent](.claude/agents/flowie.md) registers automatically, and *"run flowie on \<folder / files / URL\>"* runs the current release. [`scripts/flowie-sweep.sh`](scripts/flowie-sweep.sh) adds the scheduled sweep (see [The operator](#the-operator)); edit [`operator/sweep-targets.txt`](operator/sweep-targets.txt) to point at your own prototypes.
+
 **Primary — reference it from an agent.** Point your agent at the current script file and have it run FLOWIE's passes against the project or artifact you're reviewing. Because it's versioned, the agent always reads the same defined logic, and updates propagate by bumping the version.
 
 **Fallback — paste it into a chat.** If you don't have an agent set up, you can still upload the `.txt` or `.xml` to any LLM (ChatGPT, Claude) and say *"Use this FLOWIE script to analyze a UI flow I'm about to describe."* It will prompt you for anything it needs. This is the manual path — fine to start with, but the structure exists so you can automate past it.
@@ -54,7 +58,7 @@ The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` al
 ## 🛠️ Features
 
 - **Structure extraction** from screenshots, code, live URLs, prose, or a live MCP connection — no manual inventory, no privileged tool.
-- **Coupling / invariant checks** against a named, extensible invariant library (indexed order, label parity, count parity, control-has-effect, reversible nav).
+- **Coupling / invariant checks** against a named, extensible invariant library (indexed order, label parity, count parity, control-has-effect, reversible nav, single-affordance).
 - **Interaction-consequence tracing** — reviews resulting state, not just resting layout.
 - **Usability heuristics** — Shneiderman's 8 Golden Rules + Wickens et al.'s 13 display-design principles.
 - **Tool-agnostic build-spec export** — structure / routes / components / state / interactions, implementable by any agent or AI builder.

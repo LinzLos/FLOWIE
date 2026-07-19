@@ -35,6 +35,12 @@ FLOWIE is built to be operated, not just pasted — and the operator now exists
   wire it to cron/launchd (or a scheduled task) to get notified when a
   prototype breaks an invariant. Uncomment targets to enable them.
 
+The operator is deliberately **read-only and injection-aware** — the critic's
+tool allowlist can't execute or write, the sweep's orchestrator is equally
+restricted, and instruction-like text found inside a target is reported as a
+finding, never followed. The full threat model and the rules for running it
+on client work are in [`operator/SECURITY.md`](operator/SECURITY.md).
+
 Still ahead: registering the schedule itself, and richer notification routing.
 
 ## 🚀 How to use

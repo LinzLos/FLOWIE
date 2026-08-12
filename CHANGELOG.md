@@ -3,9 +3,38 @@
 All notable changes to FLOWIE are documented here. Versions track the script
 in `scripts/versions/`; `manifest.json` always points at the current release.
 
+## [2.9] — 2026-08
+
+- Current release. Added two **order-parity invariants**, closing a gap the
+  v2.8 set could not see: an ordering defect where neither side is a nav
+  control.
+- `enumeration-order` — text that names items in an order commits to that
+  order. A heading, legend, caption, or summary sentence naming two or more
+  things must render them in the order it names them. This is the prose
+  sibling of `indexed-order`, which was scoped to nav-style controls (nav,
+  TOC, breadcrumb, tab strip, stepper), so a heading reading "Inflow vs.
+  Outflow" directly above an Outflow-first legend passed every check. Purely
+  mechanical: read the label's order out as a list, compare to DOM order.
+- `operand-order` — when a derived value is shown beside the operands it is
+  computed from, the operands must read in the operation's order
+  (`net = in − out` ⇒ In precedes Out). Reading order that contradicts
+  operation order makes the reader invert the sign or backtrack to repair it.
+  Proven arithmetically rather than argued: compute the derivation in rendered
+  order and compare it to the printed result. Skipped when the formula is
+  neither stated nor inferable.
+- Wired into the lenses: `enumeration-order` runs under **navigator**
+  (ordering/wayfinding) and **a11y** (announced order vs. visual order);
+  `operand-order` runs under **friction** (the sign-flip backtrack is a
+  comprehension cost).
+- Motivated by a field miss: a loan-ops console shipped queue cards rendering
+  outflow before inflow while its own section heading, its Net Flow sub-label
+  (`+203 in · -91 out`), and its explanatory copy all named inflow first — and
+  the legend under that heading disagreed with the heading. Regression case
+  `008-enumeration-order` defends both invariants.
+
 ## [2.8] — 2026-07
 
-- Current release. Licensing cleanup only — the script's attribution block now
+- Licensing cleanup only — the script's attribution block now
   matches the repo's CC BY 4.0 license (use, adapt, and share with credit),
   replacing the former "do not republish without permission" line, which
   contradicted the LICENSE. No behavioral changes from 2.7.

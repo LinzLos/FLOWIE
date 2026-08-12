@@ -25,15 +25,20 @@ NNN-short-slug/
 
 Track each version's hit rate as cases accumulate.
 
-| Case | v2.5 | v2.6 | v2.7 |
-|------|------|------|------|
-| 001-nav-content-order | missed | caught | caught |
-| 002-duplicate-affordance | missed | missed | caught |
-| 003-dead-controls | missed | caught | caught |
-| 004-label-parity | — | — | caught |
-| 005-count-parity | — | — | caught |
-| 006-reversible-nav | — | — | caught |
-| 007-extract-from-screenshot | — | — | caught |
+| Case | v2.5 | v2.6 | v2.7 | v2.9 |
+|------|------|------|------|------|
+| 001-nav-content-order | missed | caught | caught | — |
+| 002-duplicate-affordance | missed | missed | caught | — |
+| 003-dead-controls | missed | caught | caught | — |
+| 004-label-parity | — | — | caught | — |
+| 005-count-parity | — | — | caught | — |
+| 006-reversible-nav | — | — | caught | — |
+| 007-extract-from-screenshot | — | — | caught | — |
+| 008-enumeration-order | — | — | — | — |
+
+> v2.8 has no column: it was a licensing-only release with no behavioral change
+> from v2.7, so v2.7's scores carry. v2.9 columns are "—" until a blind run —
+> fill them from a real run, never a guess.
 
 > Note on 001: the input is prose that names the divergence, so it tests that
 > the v2.6 coupling step *fires* when given the structure — not the harder
@@ -71,6 +76,18 @@ Track each version's hit rate as cases accumulate.
 > surfaced unplanted real findings (a duplicate "Reassign Staff" control — the
 > `single-affordance` invariant firing on a field artifact — and stale
 > mode-coupling on badges and the specialist list).
+
+> Note on 008: **field-motivated designed trap** — the ordering defect was
+> found in the `shift-prototype` console (Overview cards rendered
+> Outflow-left/Inflow-right while the product's own heading and Net Flow
+> sub-label both named inflow first), then rebuilt as a code fixture so the
+> divergence has to be extracted rather than read. Defends the **two invariants
+> added in v2.9**, neither covered by the v2.8 set: `enumeration-order` (a label
+> that names items in an order commits to that order — the prose sibling of
+> `indexed-order`, which is scoped to nav-style controls) and `operand-order`
+> (operands of a displayed derivation read in formula order; provable by
+> arithmetic, as in 007). Scores stay "—" until a blind v2.9 run — do not fill
+> from a guess.
 
 ## Adding a case
 

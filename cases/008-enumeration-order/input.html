@@ -1,0 +1,89 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Loan Ops · Queue Health</title>
+<style>
+  body { font: 14px/1.5 system-ui, sans-serif; margin: 32px; color: #1c1a19; background: #faf7f5; }
+  h1 { font-size: 20px; margin: 0 0 20px; }
+  h2 { font-size: 15px; margin: 0 0 12px; }
+  .row { display: flex; gap: 16px; margin-bottom: 24px; }
+  .card { background: #fff; border: 1px solid #e5ded9; border-radius: 12px; padding: 16px 20px; flex: 1; }
+  .kpi-label { font-size: 10px; letter-spacing: .7px; text-transform: uppercase; color: #8a807b; }
+  .kpi-value { font-size: 26px; font-weight: 700; margin-top: 4px; }
+  .kpi-sub { font-size: 11px; color: #8a807b; margin-top: 4px; }
+  .pair { display: flex; gap: 28px; margin-top: 14px; }
+  .pair .metric-label { font-size: 10px; letter-spacing: .7px; text-transform: uppercase; }
+  .pair .metric-value { font-size: 20px; font-weight: 700; }
+  .legend { display: flex; gap: 14px; margin-bottom: 10px; font-size: 12px; color: #6e6259; }
+  .swatch { display: inline-block; width: 16px; height: 3px; margin-right: 5px; vertical-align: middle; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid #eee7e2; }
+  th { font-size: 10px; letter-spacing: .5px; text-transform: uppercase; color: #8a807b; }
+</style>
+
+<h1>Queue Health · Refinance</h1>
+
+<!-- Summary card -->
+<div class="row">
+  <div class="card">
+    <div class="kpi-label">Net Flow</div>
+    <div class="kpi-value">+16</div>
+    <div class="kpi-sub">Net flow = inflow &minus; outflow. Positive means the queue is growing.</div>
+    <div class="pair">
+      <div>
+        <div class="metric-label">Outflow</div>
+        <div class="metric-value">212</div>
+      </div>
+      <div>
+        <div class="metric-label">Inflow</div>
+        <div class="metric-value">228</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="kpi-label">Process Time Avg.</div>
+    <div class="kpi-value">6.1 h</div>
+    <div class="kpi-sub">Target 4.2h · 1.9h over</div>
+  </div>
+</div>
+
+<!-- Trend section -->
+<div class="card">
+  <h2>Inflow vs. Outflow</h2>
+  <div class="legend">
+    <span><span class="swatch" style="background:#2b3f7a"></span>Outflow</span>
+    <span><span class="swatch" style="background:#3dbef5"></span>Inflow</span>
+    <span><span class="swatch" style="background:#c9c1bb"></span>Target pace</span>
+  </div>
+  <svg width="100%" height="130" viewBox="0 0 520 130" role="img" aria-label="Trend chart">
+    <polyline fill="none" stroke="#c9c1bb" stroke-width="1" stroke-dasharray="2 3"
+              points="10,96 95,92 180,88 265,84 350,80 435,76 510,72"/>
+    <polyline fill="none" stroke="#2b3f7a" stroke-width="1.5"
+              points="10,104 95,98 180,95 265,88 350,82 435,79 510,74"/>
+    <polyline fill="none" stroke="#3dbef5" stroke-width="1" stroke-dasharray="3 3"
+              points="10,88 95,80 180,70 265,58 350,48 435,36 510,26"/>
+  </svg>
+  <p style="font-size:12px;color:#a33;margin:10px 0 0">
+    Backlog growing — inflow has exceeded outflow for 4 straight days.
+  </p>
+</div>
+
+<!-- Per-specialist breakdown -->
+<div class="card" style="margin-top:24px">
+  <h2>Received vs. Cleared by specialist</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Specialist</th>
+        <th>Received</th>
+        <th>Cleared</th>
+        <th>Net</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Simone Adeyemi</td><td>24</td><td>21</td><td>+3</td></tr>
+      <tr><td>Theo Bateman</td><td>19</td><td>22</td><td>&minus;3</td></tr>
+      <tr><td>Grace Yuen</td><td>17</td><td>15</td><td>+2</td></tr>
+    </tbody>
+  </table>
+</div>

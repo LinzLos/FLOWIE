@@ -1,4 +1,4 @@
-# 🧩 FLOWIE v2.8
+# 🧩 FLOWIE v2.9
 
 **FLOWIE is a design reviewer that never gets tired.** Show it whatever you have of an interface — a screenshot, code, a URL, a written description — and it finds the broken stuff: menus that don't match the page they index, buttons that look clickable but do nothing, screens you can't back out of, the same number telling two different stories on one screen. It caught every one of those in real prototypes; the receipts are in [`cases/`](cases/).
 
@@ -9,7 +9,7 @@ Under the hood, FLOWIE is a structured, versioned, machine-readable critique scr
 A single structured script (`.xml` + `.txt`, see `manifest.json` for the current version) that an LLM or agent can load and run. FLOWIE is **input/output tool-agnostic**: give it whatever you can capture — a screenshot, code, a live URL, a written description, or a **live MCP connection** from any source (a design-tool MCP server such as Figma's, a browser/DOM MCP, a project-specific server) — and it critiques the flow. Inputs are modalities, not a list of supported products. FLOWIE:
 
 - **Extracts the structure** — reads the nav, content sections, controls, their order and labels — from whatever artifact you give it. You don't hand-inventory anything.
-- **Checks coupling invariants** — verifies that coupled parts of the UI stay consistent: that a side nav's order matches the content it indexes, labels match their targets, counts line up, controls actually do something, and paths in have paths out.
+- **Checks coupling invariants** — verifies that coupled parts of the UI stay consistent: that a side nav's order matches the content it indexes, that a heading naming several things renders them in that order, labels match their targets, counts line up, a derived value's operands read in the order they're combined, controls actually do something, and paths in have paths out.
 - **Traces interactions** — evaluates what happens *after* an action (click a nav item → where do you land, in what order), not just how the screen looks at rest.
 - **Applies usability heuristics** — Shneiderman's 8 Golden Rules and Wickens et al.'s 13 display-design principles.[^sources]
 - **Outputs a contract** — a short checklist of the invariants that must hold, so a later edit to one side flags what else must change.
@@ -47,7 +47,7 @@ Still ahead: registering the schedule itself, and richer notification routing.
 
 The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` always points at the current version.
 
-**30-second start (no setup, any LLM).** Download the current script file — [`flowie_v2.8.txt`](scripts/versions/v2.8/flowie_v2.8.txt) — upload it to Claude, ChatGPT, or any capable LLM together with whatever you have of your UI (a screenshot, code, a URL, or a written description), and say *"Use this FLOWIE script to review this flow."* That's the whole install.
+**30-second start (no setup, any LLM).** Download the current script file — [`flowie_v2.9.txt`](scripts/versions/v2.9/flowie_v2.9.txt) — upload it to Claude, ChatGPT, or any capable LLM together with whatever you have of your UI (a screenshot, code, a URL, or a written description), and say *"Use this FLOWIE script to review this flow."* That's the whole install.
 
 **Claude Code users.** Clone the repo and open a session inside it — the [`flowie` subagent](.claude/agents/flowie.md) registers automatically, and *"run flowie on \<folder / files / URL\>"* runs the current release. [`scripts/flowie-sweep.sh`](scripts/flowie-sweep.sh) adds the scheduled sweep (see [The operator](#the-operator)); edit [`operator/sweep-targets.txt`](operator/sweep-targets.txt) to point at your own prototypes.
 
@@ -58,7 +58,7 @@ The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` al
 ## 🛠️ Features
 
 - **Structure extraction** from screenshots, code, live URLs, prose, or a live MCP connection — no manual inventory, no privileged tool.
-- **Coupling / invariant checks** against a named, extensible invariant library (indexed order, label parity, count parity, control-has-effect, reversible nav, single-affordance).
+- **Coupling / invariant checks** against a named, extensible invariant library (indexed order, enumeration order, label parity, operand order, count parity, control-has-effect, reversible nav, single-affordance).
 - **Interaction-consequence tracing** — reviews resulting state, not just resting layout.
 - **Usability heuristics** — Shneiderman's 8 Golden Rules + Wickens et al.'s 13 display-design principles.
 - **Tool-agnostic build-spec export** — structure / routes / components / state / interactions, implementable by any agent or AI builder.

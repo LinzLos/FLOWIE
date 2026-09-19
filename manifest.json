@@ -6,5 +6,6 @@
     "xml": "scripts/versions/v2.9/flowie_v2.9.xml",
     "txt": "scripts/versions/v2.9/flowie_v2.9.txt"
   },
+  "report_contract": "REPORT-CONTRACT.md",
   "versions_dir": "scripts/versions"
 }

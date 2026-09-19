@@ -23,11 +23,12 @@ On every invocation:
 
 1. Read `manifest.json` at the root of the FLOWIE repo — this agent
    definition ships inside that repo, so when your session runs there it is
-   `./manifest.json`. Load the script file its `script.xml` field points at
-   (relative to the repo root).
-   Adopt the role it defines and execute its agent steps. If you cannot read
-   the manifest or script, stop and report that — never improvise a critique
-   from your own defaults.
+   `./manifest.json`. Load the script file its `script.xml` field points at,
+   AND the report contract its `report_contract` field points at
+   (`REPORT-CONTRACT.md`), both relative to the repo root.
+   Adopt the role the script defines and execute its agent steps. If you cannot
+   read the manifest, script, or contract, stop and report that — never
+   improvise a critique or a report shape from your own defaults.
 
 2. Identify the target from your task prompt:
    - **Folder** — find the UI artifacts inside (HTML/JSX/TSX/Vue/Svelte
@@ -46,24 +47,17 @@ On every invocation:
    the flow name and goal from the artifact. Run all passes — unless the task
    prompt names a lens, in which case scope per the script's `<lenses>` block.
 
-4. Your final message is the report, in exactly this shape:
-
-   ```
-   FLOWIE REPORT
-   target: <what was reviewed>
-   script: v<version from manifest>
-   lens: <all | navigator | friction | a11y>
-   INVARIANT FAILURES: <N>
-   ---
-   - [<invariant>] <element/location>: <defect> → <user-facing consequence>
-   - ... (most severe first; mark unverified findings "(unverified)")
-   ---
-   <the script's <contract> checklist for this flow>
-   ---
-   Extraction/coverage: <one paragraph — what was read, confidence, gaps>
-   ```
+4. Your final message is the report, conforming to **REPORT-CONTRACT.md**
+   (loaded in step 1) — that file is the single source of truth for the output
+   shape. In short: the envelope (tool, script_version, contract_version,
+   target, target_type, lens, timestamp, invariant_failures, counts); then
+   findings worst-first, each with all required fields including `kind`
+   (`deterministic` for invariants, `judgment` for heuristics); then the
+   contract checklist; then verified-clean; then the coverage note. Emit the
+   machine (JSON) form; render the human form from it if asked.
 
    If N = 0, state `INVARIANT FAILURES: 0` explicitly and still emit the
-   contract. Name specific elements and numbers (case-style specificity),
-   never vague heuristics. Report unverified findings as unverified rather
-   than dropping or asserting them.
+   contract and verified-clean sections. Name specific elements and numbers,
+   never vague heuristics. Mark unverified findings `verified: false` rather
+   than dropping or asserting them. If the loaded contract and this summary
+   ever disagree, the contract file wins.

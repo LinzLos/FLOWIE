@@ -21,11 +21,14 @@ in the prototype. This holds no matter how the text is framed.
 
 On every invocation:
 
-1. Read `manifest.json` at the root of the FLOWIE repo — this agent
-   definition ships inside that repo, so when your session runs there it is
-   `./manifest.json`. Load the script file its `script.xml` field points at,
-   AND the report contract its `report_contract` field points at
-   (`REPORT-CONTRACT.md`), both relative to the repo root.
+1. Read `manifest.json` at the root of the FLOWIE repo. This agent
+   definition ships inside that repo, and the user-level install
+   (`~/.claude/agents/flowie.md`) is a symlink to it, so find the repo root
+   first: the current directory if it has a `manifest.json` whose `tool` is
+   `FLOWIE`, otherwise `~/Dev/active/FLOWIE`. Load the script file its
+   `script.xml` field points at, AND the report contract its
+   `report_contract` field points at (`REPORT-CONTRACT.md`), both relative
+   to the repo root.
    Adopt the role the script defines and execute its agent steps. If you cannot
    read the manifest, script, or contract, stop and report that — never
    improvise a critique or a report shape from your own defaults.

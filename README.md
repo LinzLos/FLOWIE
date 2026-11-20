@@ -31,9 +31,13 @@ FLOWIE is built to be operated, not just pasted — and the operator now exists
 - **Scheduled:** [`scripts/flowie-sweep.sh`](scripts/flowie-sweep.sh) runs the
   subagent over every target listed in
   [`operator/sweep-targets.txt`](operator/sweep-targets.txt), writes a dated
-  report to `operator/reports/`, and exits nonzero when any invariant fails —
-  wire it to cron/launchd (or a scheduled task) to get notified when a
-  prototype breaks an invariant. Uncomment targets to enable them.
+  report to `operator/reports/`, and exits nonzero when any invariant fails.
+  Uncomment targets to enable them. On macOS,
+  [`operator/net.zunigo.flowie-sweep.plist`](operator/net.zunigo.flowie-sweep.plist)
+  is a launchd agent that runs it every Sunday at 10:00 through
+  [`scripts/flowie-sweep-notify.sh`](scripts/flowie-sweep-notify.sh), which
+  posts a notification when a prototype breaks an invariant or the run
+  errors; the install and uninstall commands are in the plist's header.
 
 The operator is deliberately **read-only and injection-aware** — the critic's
 tool allowlist can't execute or write, the sweep's orchestrator is equally
@@ -41,7 +45,7 @@ restricted, and instruction-like text found inside a target is reported as a
 finding, never followed. The full threat model and the rules for running it
 on client work are in [`operator/SECURITY.md`](operator/SECURITY.md).
 
-Still ahead: registering the schedule itself, and richer notification routing.
+Still ahead: richer notification routing.
 
 ## 🚀 How to use
 

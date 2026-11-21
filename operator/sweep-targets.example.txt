@@ -1,0 +1,9 @@
+# FLOWIE sweep targets: an example. Copy this file to operator/sweep-targets.txt
+# (which git ignores, so your own paths stay on your machine) and list one
+# target per line: a folder, a file, or a live URL. Lines starting with # are
+# ignored. Optionally append "| lens" (navigator, friction, or a11y) to scope
+# a target's critique.
+#
+# /Users/YOU/projects/some-prototype
+# /Users/YOU/projects/another-prototype | navigator
+# https://example.com

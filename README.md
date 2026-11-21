@@ -29,10 +29,11 @@ FLOWIE is built to be operated, not just pasted — and the operator now exists
   on ~/Dev/active/some-prototype"*. It contains no critique logic; the script
   stays the single source of truth.
 - **Scheduled:** [`scripts/flowie-sweep.sh`](scripts/flowie-sweep.sh) runs the
-  subagent over every target listed in
-  [`operator/sweep-targets.txt`](operator/sweep-targets.txt), writes a dated
-  report to `operator/reports/`, and exits nonzero when any invariant fails.
-  Uncomment targets to enable them. On macOS,
+  subagent over every target listed in `operator/sweep-targets.txt`, writes a
+  dated report to `operator/reports/`, and exits nonzero when any invariant
+  fails. Copy
+  [`operator/sweep-targets.example.txt`](operator/sweep-targets.example.txt)
+  to `operator/sweep-targets.txt` and list your own targets. On macOS,
   [`operator/net.zunigo.flowie-sweep.plist`](operator/net.zunigo.flowie-sweep.plist)
   is a launchd agent that runs it every Sunday at 10:00 through
   [`scripts/flowie-sweep-notify.sh`](scripts/flowie-sweep-notify.sh), which
@@ -53,7 +54,7 @@ The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` al
 
 **30-second start (no setup, any LLM).** Download the current script file — [`flowie_v2.9.txt`](scripts/versions/v2.9/flowie_v2.9.txt) — upload it to Claude, ChatGPT, or any capable LLM together with whatever you have of your UI (a screenshot, code, a URL, or a written description), and say *"Use this FLOWIE script to review this flow."* That's the whole install.
 
-**Claude Code users.** Clone the repo and open a session inside it — the [`flowie` subagent](.claude/agents/flowie.md) registers automatically, and *"run flowie on \<folder / files / URL\>"* runs the current release. [`scripts/flowie-sweep.sh`](scripts/flowie-sweep.sh) adds the scheduled sweep (see [The operator](#the-operator)); edit [`operator/sweep-targets.txt`](operator/sweep-targets.txt) to point at your own prototypes.
+**Claude Code users.** Clone the repo and open a session inside it — the [`flowie` subagent](.claude/agents/flowie.md) registers automatically, and *"run flowie on \<folder / files / URL\>"* runs the current release. [`scripts/flowie-sweep.sh`](scripts/flowie-sweep.sh) adds the scheduled sweep (see [The operator](#the-operator)); copy [`operator/sweep-targets.example.txt`](operator/sweep-targets.example.txt) to `operator/sweep-targets.txt` and point it at your own prototypes.
 
 **Primary — reference it from an agent.** Point your agent at the current script file and have it run FLOWIE's passes against the project or artifact you're reviewing. Because it's versioned, the agent always reads the same defined logic, and updates propagate by bumping the version.
 
@@ -69,13 +70,6 @@ The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` al
 - **Regression cases** in [`cases/`](cases/) — known failure modes FLOWIE should catch, so each version can be scored against the last.
 - **Role-based critique lenses** — optional navigator / friction / a11y lenses that scope the existing passes to one perspective (wayfinding, effort, or assistive-tech use); with no lens selected, the full critique runs unchanged.
 - **Guided or Quick Start** input; support for conditional, role-based, and bulk flow variants.
-
-## 🙌 Contributors
-
-People who used FLOWIE on real work and genuinely shaped it:
-
-- **An early tester** — Early tester of FLOWIE v1. Shared reactions and refinement opportunities after using it on live prototypes.
-- **A tester** — Used FLOWIE v2.2 on BRIDGEGOOD's apprentice database; helped shape onboarding clarity and schema logic.
 
 ---
 

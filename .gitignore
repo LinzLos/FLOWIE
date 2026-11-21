@@ -1,1 +1,5 @@
 .DS_Store
+# Private working notes and machine-specific files: kept on disk, never published.
+ROADMAP.md
+.issuie/
+operator/sweep-targets.txt

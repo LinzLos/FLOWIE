@@ -3,7 +3,7 @@
 <!-- launchd agent for the FLOWIE sweep: every Sunday at 10:00 it runs scripts/flowie-sweep-notify.sh.
      Install:   cp operator/net.zunigo.flowie-sweep.plist ~/Library/LaunchAgents/ && launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/net.zunigo.flowie-sweep.plist
      Uninstall: launchctl bootout gui/$(id -u)/net.zunigo.flowie-sweep && rm ~/Library/LaunchAgents/net.zunigo.flowie-sweep.plist
-     Paths are absolute because launchd does not expand ~; edit them if the repo moves. -->
+     Paths are absolute because launchd does not expand ~; replace /Users/YOU/path/to/FLOWIE with this repo's location before installing. -->
 <plist version="1.0">
 <dict>
   <key>Label</key>

@@ -26,7 +26,7 @@ fi
 trap 'rmdir "$lock"' EXIT INT TERM
 
 targets_file="operator/sweep-targets.txt"
-[ -f "$targets_file" ] || { echo "sweep FAIL: missing $targets_file"; exit 1; }
+[ -f "$targets_file" ] || { echo "sweep FAIL: missing $targets_file (copy operator/sweep-targets.example.txt to it and list your targets)"; exit 1; }
 targets=$(grep -Ev '^[[:space:]]*(#|$)' "$targets_file" || true)
 if [ -z "$targets" ]; then
   echo "sweep: no active targets in $targets_file (uncomment some) — nothing to do"

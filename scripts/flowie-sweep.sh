@@ -1,8 +1,8 @@
 #!/bin/sh
 # FLOWIE sweep (issue #8): run the flowie subagent over every active target
 # in operator/sweep-targets.txt, write a dated report, and exit 1 if any
-# target has invariant failures — so a scheduler (launchd/cron) can notify
-# on nonzero exit.
+# target has invariant failures or came back without a failure count — so a
+# scheduler (launchd/cron) can notify on nonzero exit.
 #
 # Security posture (see operator/SECURITY.md):
 #   - The flowie subagent is read-only by its own tools allowlist.
@@ -48,6 +48,17 @@ $targets" | claude -p \
 }
 
 echo "sweep report: $report"
+# A target with no failure count is a failed run, not a clean one: a stalled or refused run writes text with no count in it.
+# A report carries the prose line, the contract's JSON field, or both, so take whichever form appears more often.
+prose=$(grep -Ec 'INVARIANT FAILURES:' "$report" || true)
+json=$(grep -Ec '"invariant_failures":' "$report" || true)
+counted=$prose
+if [ "$json" -gt "$counted" ]; then counted=$json; fi
+wanted=$(printf '%s\n' "$targets" | wc -l | tr -d ' ')
+if [ "$counted" -lt "$wanted" ]; then
+  echo "sweep FAIL: $counted of $wanted targets have a failure count — see $report"
+  exit 1
+fi
 # Match the prose line or the contract's JSON field, so a restyled line (bold, moved) cannot read as clean.
 if grep -Eq 'INVARIANT FAILURES:[* ]*[1-9]|"invariant_failures": *[1-9]' "$report"; then
   echo "sweep: INVARIANT FAILURES FOUND"

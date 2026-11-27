@@ -27,18 +27,30 @@ Track each version's hit rate as cases accumulate.
 
 | Case | v2.5 | v2.6 | v2.7 | v2.9 |
 |------|------|------|------|------|
-| 001-nav-content-order | missed | caught | caught | — |
-| 002-duplicate-affordance | missed | missed | caught | — |
-| 003-dead-controls | missed | caught | caught | — |
-| 004-label-parity | — | — | caught | — |
-| 005-count-parity | — | — | caught | — |
-| 006-reversible-nav | — | — | caught | — |
-| 007-extract-from-screenshot | — | — | caught | — |
-| 008-enumeration-order | — | — | — | — |
+| 001-nav-content-order | missed | caught | caught | caught |
+| 002-duplicate-affordance | missed | missed | caught | caught |
+| 003-dead-controls | missed | caught | caught | caught |
+| 004-label-parity | — | — | caught | caught |
+| 005-count-parity | — | — | caught | caught |
+| 006-reversible-nav | — | — | caught | caught |
+| 007-extract-from-screenshot | — | — | caught | partial |
+| 008-enumeration-order | — | — | — | caught |
 
 > v2.8 has no column: it was a licensing-only release with no behavioral change
-> from v2.7, so v2.7's scores carry. v2.9 columns are "—" until a blind run —
-> fill them from a real run, never a guess.
+> from v2.7, so v2.7's scores carry. A "—" means that version was never run on
+> that case — fill a column from a real run, never a guess.
+
+> v2.9 was scored on 2026-11-27 from blind runs: each run saw only the script,
+> the report contract and the case input, under a neutral file name. For the
+> prose cases (001 to 003) the title and the sentences that state the diagnosis
+> were removed from the input first, so this column is a stricter test than the
+> earlier ones.
+
+> Note on 007 (v2.9): the sign contradiction was caught and proven
+> arithmetically in both views, and the unchanged "47 loans" figure was noted.
+> It scores partial because one judgment finding objected to the historical
+> view removing the alerts' read-only links, which this case lists as a
+> deliberate non-defect.
 
 > Note on 001: the input is prose that names the divergence, so it tests that
 > the v2.6 coupling step *fires* when given the structure — not the harder

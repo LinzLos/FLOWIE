@@ -3,9 +3,38 @@
 All notable changes to FLOWIE are documented here. Versions track the script
 in `scripts/versions/`; `manifest.json` always points at the current release.
 
+## [2.10] — 2026-11
+
+- Current release. Makes the **fact-or-opinion mark a rule instead of a
+  choice**, and adds one invariant.
+- A finding's `kind` is now derived from its name. Only the named invariants
+  are `deterministic`; `heuristic:<name>` findings and the new
+  `candidate:<name>` findings are `judgment`. A candidate is a provable-looking
+  contradiction that matches no named invariant: it is reported with its
+  evidence, but a run may not call it deterministic, coin an invariant name for
+  it, or stretch a named invariant to cover it. Candidates that keep recurring
+  are how the library grows, each with a regression case.
+- `value-parity` — the same quantity shown in more than one place must agree
+  in value, sign and unit, and a number shown beside the figures it is computed
+  from must equal the arithmetic. Provable from the screen alone; if proving
+  it needs outside knowledge or an assumption about which figures relate, it is
+  a candidate instead. Runs under the **friction** lens. Regression case
+  `007-extract-from-screenshot` defends it.
+- Report contract 1.1: the name-to-kind rule, the candidate form, and the
+  sentence claiming deterministic findings show "zero variance" replaced with
+  what is true — a deterministic finding is checkable, but while a model
+  executes the checks a run can miss one.
+- `scripts/check_report.py` reads the invariant names from the script and, for
+  contract 1.1 reports, treats a name-and-kind mismatch as a problem instead of
+  a warning.
+- Motivated by blind runs of v2.9 that marked heuristics deterministic, marked
+  a named invariant judgment, and coined invariant names on the spot — more
+  than half the findings marked deterministic in two runs of one project
+  carried names outside the library.
+
 ## [2.9] — 2026-08
 
-- Current release. Added two **order-parity invariants**, closing a gap the
+- Added two **order-parity invariants**, closing a gap the
   v2.8 set could not see: an ordering defect where neither side is a nav
   control.
 - `enumeration-order` — text that names items in an order commits to that

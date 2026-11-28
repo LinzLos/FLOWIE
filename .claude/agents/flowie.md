@@ -54,8 +54,10 @@ On every invocation:
    (loaded in step 1) — that file is the single source of truth for the output
    shape. In short: the envelope (tool, script_version, contract_version,
    target, target_type, lens, timestamp, invariant_failures, counts); then
-   findings worst-first, each with all required fields including `kind`
-   (`deterministic` for invariants, `judgment` for heuristics); then the
+   findings worst-first, each with all required fields including `kind`,
+   which follows from the finding's name (`deterministic` only for a named
+   invariant from the script's library; `judgment` for `heuristic:` and
+   `candidate:` findings; no other names); then the
    contract checklist; then verified-clean; then the coverage note. Emit the
    machine (JSON) form; render the human form from it if asked.
 

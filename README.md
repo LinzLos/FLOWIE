@@ -1,4 +1,4 @@
-# 🧩 FLOWIE v2.9
+# 🧩 FLOWIE v2.10
 
 **FLOWIE is a design reviewer that never gets tired.** Show it whatever you have of an interface — a screenshot, code, a URL, a written description — and it finds the broken stuff: menus that don't match the page they index, buttons that look clickable but do nothing, screens you can't back out of, the same number telling two different stories on one screen. It caught every one of those in real prototypes; the receipts are in [`cases/`](cases/).
 
@@ -52,7 +52,7 @@ Still ahead: richer notification routing.
 
 The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` always points at the current version.
 
-**30-second start (no setup, any LLM).** Download the current script file — [`flowie_v2.9.txt`](scripts/versions/v2.9/flowie_v2.9.txt) — upload it to Claude, ChatGPT, or any capable LLM together with whatever you have of your UI (a screenshot, code, a URL, or a written description), and say *"Use this FLOWIE script to review this flow."* That's the whole install.
+**30-second start (no setup, any LLM).** Download the current script file — [`flowie_v2.10.txt`](scripts/versions/v2.10/flowie_v2.10.txt) — upload it to Claude, ChatGPT, or any capable LLM together with whatever you have of your UI (a screenshot, code, a URL, or a written description), and say *"Use this FLOWIE script to review this flow."* That's the whole install.
 
 **Claude Code users.** Clone the repo and open a session inside it — the [`flowie` subagent](.claude/agents/flowie.md) registers automatically, and *"run flowie on \<folder / files / URL\>"* runs the current release. [`scripts/flowie-sweep.sh`](scripts/flowie-sweep.sh) adds the scheduled sweep (see [The operator](#the-operator)); copy [`operator/sweep-targets.example.txt`](operator/sweep-targets.example.txt) to `operator/sweep-targets.txt` and point it at your own prototypes.
 
@@ -63,7 +63,7 @@ The script lives in [`scripts/versions/`](scripts/versions/); `manifest.json` al
 ## 🛠️ Features
 
 - **Structure extraction** from screenshots, code, live URLs, prose, or a live MCP connection — no manual inventory, no privileged tool.
-- **Coupling / invariant checks** against a named, extensible invariant library (indexed order, enumeration order, label parity, operand order, count parity, control-has-effect, reversible nav, single-affordance).
+- **Coupling / invariant checks** against a named, extensible invariant library (indexed order, enumeration order, label parity, operand order, value parity, count parity, control-has-effect, reversible nav, single-affordance).
 - **Interaction-consequence tracing** — reviews resulting state, not just resting layout.
 - **Usability heuristics** — Shneiderman's 8 Golden Rules + Wickens et al.'s 13 display-design principles.
 - **Tool-agnostic build-spec export** — structure / routes / components / state / interactions, implementable by any agent or AI builder.

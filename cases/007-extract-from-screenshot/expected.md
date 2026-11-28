@@ -69,6 +69,8 @@ is an extraction/coupling error.
 showing the same metric must agree in value AND sign convention
 ```
 
+Named as its own invariant, `value-parity`, in v2.10.
+
 Real artifact (not synthetic): captured 2026-07-18 from a working prototype.
 Unlike prose case 001 and code cases 004–006, this is the image path — the
 extract step has to read structure and numbers out of pixels before any

@@ -25,16 +25,16 @@ NNN-short-slug/
 
 Track each version's hit rate as cases accumulate.
 
-| Case | v2.5 | v2.6 | v2.7 | v2.9 |
-|------|------|------|------|------|
-| 001-nav-content-order | missed | caught | caught | caught |
-| 002-duplicate-affordance | missed | missed | caught | caught |
-| 003-dead-controls | missed | caught | caught | caught |
-| 004-label-parity | — | — | caught | caught |
-| 005-count-parity | — | — | caught | caught |
-| 006-reversible-nav | — | — | caught | caught |
-| 007-extract-from-screenshot | — | — | caught | partial |
-| 008-enumeration-order | — | — | — | caught |
+| Case | v2.5 | v2.6 | v2.7 | v2.9 | v2.10 |
+|------|------|------|------|------|-------|
+| 001-nav-content-order | missed | caught | caught | caught | caught |
+| 002-duplicate-affordance | missed | missed | caught | caught | caught |
+| 003-dead-controls | missed | caught | caught | caught | caught |
+| 004-label-parity | — | — | caught | caught | caught |
+| 005-count-parity | — | — | caught | caught | caught |
+| 006-reversible-nav | — | — | caught | caught | caught |
+| 007-extract-from-screenshot | — | — | caught | partial | partial |
+| 008-enumeration-order | — | — | — | caught | caught |
 
 > v2.8 has no column: it was a licensing-only release with no behavioral change
 > from v2.7, so v2.7's scores carry. A "—" means that version was never run on
@@ -46,11 +46,17 @@ Track each version's hit rate as cases accumulate.
 > were removed from the input first, so this column is a stricter test than the
 > earlier ones.
 
-> Note on 007 (v2.9): the sign contradiction was caught and proven
+> v2.10 was scored the same way on the same day, on the same cleaned inputs.
+> All eight reports also passed `scripts/check_report.py` under contract 1.1:
+> no heuristic or candidate marked deterministic, no named invariant marked
+> judgment, and no invariant name outside the library.
+
+> Note on 007 (v2.9 and v2.10): the sign contradiction was caught and proven
 > arithmetically in both views, and the unchanged "47 loans" figure was noted.
 > It scores partial because one judgment finding objected to the historical
 > view removing the alerts' read-only links, which this case lists as a
-> deliberate non-defect.
+> deliberate non-defect. v2.10 reports the contradiction under its own name,
+> `value-parity`, and repeats the same objection.
 
 > Note on 001: the input is prose that names the divergence, so it tests that
 > the v2.6 coupling step *fires* when given the structure — not the harder
@@ -98,8 +104,7 @@ Track each version's hit rate as cases accumulate.
 > that names items in an order commits to that order — the prose sibling of
 > `indexed-order`, which is scoped to nav-style controls) and `operand-order`
 > (operands of a displayed derivation read in formula order; provable by
-> arithmetic, as in 007). Scores stay "—" until a blind v2.9 run — do not fill
-> from a guess.
+> arithmetic, as in 007). First scored from a blind run on 2026-11-27.
 
 ## Adding a case
 

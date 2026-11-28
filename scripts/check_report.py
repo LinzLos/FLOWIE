@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
-# Checks FLOWIE reports against REPORT-CONTRACT.md v1.0: envelope, finding fields, worst-first order, counts, body sections.
+# Checks FLOWIE reports against REPORT-CONTRACT.md (v1.0 and v1.1): envelope, finding fields, worst-first order, counts, body sections, and that each finding's kind matches its name.
 #
 # Usage:  python3 scripts/check_report.py operator/reports/<report>.md [more reports...]
 #
 # Works on a single-target report or a sweep report (one JSON object per target),
 # fenced or bare. Problems are breaks of the contract's Conformance section and
 # make the exit code 1. Warnings are things the contract says elsewhere (field
-# order, heuristic findings marked deterministic) and do not change the exit code.
+# order) and do not change the exit code.
 # Exit 2 means no FLOWIE report object was found in a file.
+#
+# Names and kinds: contract 1.1 says a finding's kind follows from its name. A
+# name from the script's <invariants> library is deterministic; heuristic:<name>
+# and candidate:<name> are judgment; no other names are allowed. For a report
+# that declares contract 1.1 or later a mismatch is a problem. For a 1.0 report
+# it stays a warning, as it was when those reports were written.
 import json
+import os
 import re
 import sys
+
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ENVELOPE = ["tool", "script_version", "contract_version", "target", "target_type",
             "lens", "timestamp", "invariant_failures", "counts"]
@@ -42,6 +51,35 @@ def find_reports(text):
         pos = end
 
 
+def library(script_version):
+    """The invariant names defined by a script version, or None if it cannot be read."""
+    paths = []
+    if re.fullmatch(r"[0-9]+(\.[0-9]+)*", str(script_version or "")):
+        paths.append(os.path.join(REPO, "scripts", "versions", f"v{script_version}", f"flowie_v{script_version}.xml"))
+    try:
+        with open(os.path.join(REPO, "manifest.json"), encoding="utf-8") as handle:
+            paths.append(os.path.join(REPO, json.load(handle)["script"]["xml"]))
+    except (OSError, ValueError, KeyError, TypeError):
+        pass
+    for path in paths:
+        try:
+            with open(path, encoding="utf-8") as handle:
+                names = set(re.findall(r'<invariant\s+name="([^"]+)"', handle.read()))
+        except OSError:
+            continue
+        if names:
+            return names
+    return None
+
+
+def at_least(version, wanted):
+    """True when a dotted version string such as '1.1' is at least the wanted tuple."""
+    try:
+        return tuple(int(part) for part in str(version).split(".")) >= wanted
+    except ValueError:
+        return False
+
+
 def in_order(keys, wanted):
     return [k for k in keys if k in wanted] == [k for k in wanted if k in keys]
 
@@ -67,6 +105,11 @@ def check(report):
     if not isinstance(findings, list):
         problems.append("'findings' is not a list")
         findings = []
+    strict = at_least(report.get("contract_version"), (1, 1))
+    names = library(report.get("script_version"))
+    if names is None:
+        warnings.append("could not read the script's invariant library, so finding names were not checked")
+    mismatches = problems if strict else warnings
     tally = {name: 0 for name in RANK}
     previous = max(RANK.values())
     seen = set()
@@ -87,11 +130,22 @@ def check(report):
             problems.append(f"{fid}: 'verified' is not true or false")
         if "source" in finding and finding["source"] not in SOURCES:
             warnings.append(f"{fid}: source {finding['source']!r} is not in the contract's list")
-        heuristic = str(finding.get("invariant", "")).startswith("heuristic:")
+        name = str(finding.get("invariant", ""))
+        heuristic = name.startswith("heuristic:")
+        candidate = name.startswith("candidate:")
         if heuristic and kind == "deterministic":
-            warnings.append(f"{fid}: {finding.get('invariant')} is marked deterministic (heuristics are judgment)")
-        if not heuristic and kind == "judgment":
-            warnings.append(f"{fid}: invariant {finding.get('invariant')!r} is marked judgment (invariants are deterministic)")
+            mismatches.append(f"{fid}: {name} is marked deterministic (heuristics are judgment)")
+        elif candidate and kind == "deterministic":
+            mismatches.append(f"{fid}: {name} is marked deterministic (candidates are judgment)")
+        elif not heuristic and not candidate and names is not None and name not in names:
+            if strict:
+                problems.append(f"{fid}: {name!r} is not a named invariant (use candidate:{name} or heuristic:<name>)")
+            elif kind == "deterministic":
+                warnings.append(f"{fid}: {name!r} is marked deterministic but is not a named invariant")
+            else:
+                warnings.append(f"{fid}: invariant {name!r} is marked judgment (invariants are deterministic)")
+        elif not heuristic and not candidate and kind == "judgment":
+            mismatches.append(f"{fid}: invariant {name!r} is marked judgment (invariants are deterministic)")
         severity = finding.get("severity")
         if severity not in RANK:
             problems.append(f"{fid}: severity {severity!r} is not on the scale")
